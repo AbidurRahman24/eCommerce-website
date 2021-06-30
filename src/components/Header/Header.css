@@ -1,0 +1,6 @@
+div#responsive-navbar-nav {
+    justify-content: flex-end;
+}
+.nav-line{
+    border-top: 1px solid black;
+}

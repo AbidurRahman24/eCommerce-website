@@ -9,19 +9,12 @@ const Header = () => {
     <div>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" defaultActiveKey="/home">
   <Container>
-  <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+  <img src={logo} alt="" />
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
-  <Form className="d-flex justify-content-end">
-      <FormControl
-        type="search"
-        placeholder="Search"
-        className="mr-2"
-        aria-label="Search"
-      />
-      <Button variant="outline-success">Search</Button>
-    </Form>
+  
     <Nav className="me-auto justify-content-end">
+    
     <Nav.Link href="/home">Home</Nav.Link>
       <Nav.Link href="/reviews">Reviews</Nav.Link>
       <Nav.Link href="/inventory">Inventory</Nav.Link>
@@ -37,6 +30,21 @@ const Header = () => {
   </Navbar.Collapse>
   </Container>
 </Navbar>
+ 
+<Navbar className='nav-line'  bg="dark" >
+    <Container>
+    <Form className="d-flex">
+      <FormControl
+        type="search"
+        placeholder="Search"
+        className="mr-2"
+        aria-label="Search"
+      />
+      <Button variant="outline-success">Search</Button>
+    </Form>
+    </Container>
+  </Navbar>
+
     </div>
   );
 };
