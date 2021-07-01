@@ -2,5 +2,16 @@ div#responsive-navbar-nav {
     justify-content: flex-end;
 }
 .nav-line{
+    background-color: black;
     border-top: 1px solid black;
+}
+.bg-dark {
+    background-color: #f3eaeb!important;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgb(0 0 0);
+    font-size: 20px;
+}
+a.nav-link:hover{
+    color: greenyellow
 }
