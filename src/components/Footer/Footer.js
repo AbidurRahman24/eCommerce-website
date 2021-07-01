@@ -7,13 +7,13 @@ const Footer = () => {
       <Container >
       <Row>
     <Col xs={6} md={4}>
-      xs=6 md=4
+      <h1>Foooter-1</h1>
     </Col>
     <Col xs={6} md={4}>
-      xs=6 md=4
+    <h1>Foooter-2</h1>
     </Col>
     <Col xs={6} md={4}>
-      xs=6 md=4
+    <h1>Foooter-3</h1>
     </Col>
   </Row>
       </Container>
