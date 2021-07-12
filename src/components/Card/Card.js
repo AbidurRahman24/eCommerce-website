@@ -35,12 +35,13 @@ const Card = (props) => {
             <h2 >Order Summary</h2>
             <p>Items ordered: {card.length}</p>
             </div>
-            <p>price: {formatNumber(total)}</p>
+            <p>Price: {formatNumber(total)}</p>
             <p><small>Shiiping Cost: {shipping}</small></p>
             <p><small>Tax + VAT: {tax}</small></p>
-            <p>Total Price: {grandTotal}</p>
+            <h5 style={{color:'orange'}}>Total Price: {grandTotal}</h5>
         </div>
     );
 };
+
 
 export default Card;

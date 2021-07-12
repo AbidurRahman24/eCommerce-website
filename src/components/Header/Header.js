@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import logo from "../../images/Logo.png";
-import { Navbar, Nav, NavDropdown, FormControl, Form, Button } from "react-bootstrap";
+import { Navbar, Nav, FormControl, Form, Button } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 
 const Header = () => {
@@ -16,7 +16,7 @@ const Header = () => {
     <Nav className="me-auto justify-content-end">
     
     <Nav.Link href="/home">Home</Nav.Link>
-      <Nav.Link href="/reviews">Reviews</Nav.Link>
+      <Nav.Link href="/review">Review</Nav.Link>
       <Nav.Link href="/inventory">Inventory</Nav.Link>
       {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
