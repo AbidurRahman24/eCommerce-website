@@ -7,7 +7,7 @@ import { Container } from "react-bootstrap";
 const Header = () => {
   return (
     <div>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" defaultActiveKey="/home">
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
   <Container>
   <img src={logo} alt="" />
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />

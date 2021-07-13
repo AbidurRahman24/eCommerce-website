@@ -3,6 +3,7 @@ import './Shop.css'
 import fakeData from "../../fakeData";
 import Products from "../Products/Products";
 import Card from "../Card/Card";
+import { addToDatabaseCart } from "../../utilities/databaseManager";
 
 const Shop = () => {
     
@@ -12,7 +13,11 @@ const Shop = () => {
 
   const handleClick = (product) =>{
       const newCard = [...card, product]
-      setCard(newCard)
+      setCard(newCard);
+      const sameProduct = newCard.filter(pd => pd.key === product.key)
+      const count = sameProduct.length
+      addToDatabaseCart(product.key, count);
+      
   }
 
   return (
@@ -22,9 +27,12 @@ const Shop = () => {
             <div className="col-md-9">
                 <div className="product-container">
                     {
+
                         products.map(product => 
                         <Products
+                        key={product.key}
                         handleClick={handleClick}
+                        showAddToCart={true}
                          product={product}
                          >
                          </Products>)

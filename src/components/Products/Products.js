@@ -21,7 +21,7 @@ const Products = (props) => {
                     <p>Price: $ {price}</p>
                     <p> Only {stock} left in stock - order soon</p>
                     {
-                        props.showAddToCart === true &&  <Button onClick={()=> props.handleClick(props.product)} variant="primary"> <FontAwesomeIcon icon={faShoppingCart} /> Add To Card</Button>
+                        props.showAddToCart && <Button onClick={()=> props.handleClick(props.product)} variant="primary"> <FontAwesomeIcon icon={faShoppingCart} /> Add To Card</Button>
                     }
                 </div>
             </div>
