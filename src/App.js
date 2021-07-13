@@ -14,6 +14,7 @@ import {
 import Review from './components/Review/Review';
 import Inventory from './components/Inventory/Inventory';
 import NoMatch from './components/NoMatch/NoMatch';
+import ProductDetails from './components/ProductDetails/ProductDetails';
 
 
 function App() {
@@ -23,9 +24,6 @@ function App() {
       <Header></Header>
       <Router>
         <Switch>
-          <Route exact path="/home">
-            <Shop />
-          </Route>
           <Route path="/home">
             <Shop />
           </Route>
@@ -34,6 +32,12 @@ function App() {
           </Route>
           <Route path="/inventory">
             <Inventory></Inventory>
+          </Route>
+          <Route exact path="/">
+            <Shop />
+          </Route>
+          <Route path="/product/:productKey">
+            <ProductDetails></ProductDetails>
           </Route>
           <Route path="*">
             <NoMatch></NoMatch>

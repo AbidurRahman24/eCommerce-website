@@ -1,4 +1,6 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Card = (props) => {
    const card = props.card;
@@ -39,6 +41,9 @@ const Card = (props) => {
             <p><small>Shiiping Cost: {shipping}</small></p>
             <p><small>Tax + VAT: {tax}</small></p>
             <h5 style={{color:'orange'}}>Total Price: {grandTotal}</h5>
+            <Link  to='/review'>
+            <Button>Review Order</Button>
+            </Link>
         </div>
     );
 };
