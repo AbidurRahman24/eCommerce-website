@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 const Card = (props) => {
    const card = props.card;
-    const total = card.reduce( (total, prd) => total + prd.price , 0 )
+    const total = card.reduce( (total, prd) => total + prd.price * prd.quantity , 0 )
+    console.log(total);
     // let total = 0;
     // for(let i = 0; i< total.length; i++){
     //     const product = total[i];
