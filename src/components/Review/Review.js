@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
 import fakeData from '../../fakeData';
-import { getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databaseManager';
+import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import Card from '../Card/Card';
 import ReviewItem from '../ReviewItem/ReviewItem';
+import happyImage from '../../images/giphy.gif';
+
 
 const Review = () => {
     const [cart, setCart] = useState([]);
-
+    const [orderPlaced, setOrderPlaced] = useState(false);
+    const handlePlaceOrder = () =>{
+        setCart([])
+        processOrder()
+    }
+    let thankyou;
+    if(orderPlaced){
+        thankyou = <img src={happyImage} alt=""/>
+    } 
     useEffect(() => {
         //cart
         const saveCart = getDatabaseCart();
@@ -38,9 +49,11 @@ const Review = () => {
 
                     </ReviewItem>)
             }
+             { thankyou }
                     </div>
                     <div className="col-md-4">
                         <Card card={cart}></Card>
+                        <Button onClick={handlePlaceOrder}>Place Order</Button>
                     </div>
                 </div>
             </div>

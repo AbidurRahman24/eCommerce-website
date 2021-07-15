@@ -1,11 +1,9 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+
 
 const Card = (props) => {
    const card = props.card;
     const total = card.reduce( (total, prd) => total + prd.price * prd.quantity , 0 )
-    console.log(total);
     // let total = 0;
     // for(let i = 0; i< total.length; i++){
     //     const product = total[i];
@@ -42,9 +40,9 @@ const Card = (props) => {
             <p><small>Shiiping Cost: {shipping}</small></p>
             <p><small>Tax + VAT: {tax}</small></p>
             <h5 style={{color:'orange'}}>Total Price: {grandTotal}</h5>
-            <Link  to='/review'>
-            <Button>Review Order</Button>
-            </Link>
+            {
+                props.children
+            }
         </div>
     );
 };
