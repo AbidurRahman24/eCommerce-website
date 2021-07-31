@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Header.css";
 import logo from "../../images/Logo.png";
 import { Navbar, Nav, FormControl, Form, Button } from "react-bootstrap";
 import { Container } from "react-bootstrap";
+import { UserContext } from "../../App";
 
 const Header = () => {
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   return (
     <div>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
@@ -15,9 +17,9 @@ const Header = () => {
   
     <Nav className="me-auto justify-content-end">
     
-    <Nav.Link href="/home">Home</Nav.Link>
-      <Nav.Link href="/review">Review</Nav.Link>
-      <Nav.Link href="/inventory">Inventory</Nav.Link>
+    <Nav.Link to="/home">Home</Nav.Link>
+      <Nav.Link to="/review">Review</Nav.Link>
+      <Nav.Link to="/inventory">Inventory</Nav.Link>
       {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -28,10 +30,11 @@ const Header = () => {
     </Nav>
     
   </Navbar.Collapse>
+  <button onClick={() => setLoggedInUser({})}>Sign out</button>
   </Container>
 </Navbar>
  
-<Navbar className='nav-line'  bg="dark" >
+{/* <Navbar className='nav-line'  bg="dark" >
     <Container>
     <Form className="d-flex">
       <FormControl
@@ -43,7 +46,7 @@ const Header = () => {
       <Button variant="outline-success">Search</Button>
     </Form>
     </Container>
-  </Navbar>
+  </Navbar> */}
 
     </div>
   );

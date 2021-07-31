@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
+import { useHistory, useLocation } from 'react-router-dom';
 
 
 if (!firebase.apps.length) {
@@ -22,6 +23,10 @@ const EmailPassword = () => {
     error: '',
     success: false,
   })
+  let history = useHistory();
+    let location = useLocation();
+
+    let { from } = location.state || { from: { pathname: "/" } };
 
   const handleBlur = (e) => {
     let isFieldValid = true;
@@ -65,6 +70,7 @@ const EmailPassword = () => {
           newUserInfo.error = '';
           newUserInfo.success = true;
           setUser(newUserInfo);
+          history.replace(from)
           console.log('sign in user info', res.user);
         })
         .catch((error) => {

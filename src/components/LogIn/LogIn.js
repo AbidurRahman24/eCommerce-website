@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
+import { useHistory, useLocation } from 'react-router-dom';
+import FacebookLogin from './FacebookLogIn';
+import EmailPassword from './EmailPassword';
 
 // firebase.initializeApp(firebaseConfig);
 if (!firebase.apps.length) {
@@ -11,12 +14,17 @@ if (!firebase.apps.length) {
 }
 
 const LogIn = () => {
+    
     const [user, setUser] = useState({
         isSignedIn: false,
         name: '',
         email: '',
         photo: ''
     })
+    let history = useHistory();
+    let location = useLocation();
+
+    let { from } = location.state || { from: { pathname: "/" } };
     const provider = new firebase.auth.GoogleAuthProvider();
     const handleSignIn = () => {
         firebase.auth().signInWithPopup(provider)
@@ -30,6 +38,7 @@ const LogIn = () => {
                 }
                 console.log(res.user)
                 setUser(signedInUser);
+                history.replace(from)
 
             })
             .catch(err => {
@@ -55,7 +64,7 @@ const LogIn = () => {
     }
 
     return (
-        <div>
+        <div style={{textAlign:'center'}}>
             <h1>This is log in page</h1>
             {user.isSignedIn ? <button onClick={handleSignOut}>Sign Out with Google</button> :
                 <button onClick={handleSignIn}>Sign In with Google</button>
@@ -67,6 +76,8 @@ const LogIn = () => {
                     <img src={user.photo} alt="" />
                 </div>
             }
+            <FacebookLogin></FacebookLogin>
+            <EmailPassword></EmailPassword>
         </div>
     );
 };
