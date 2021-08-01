@@ -19,7 +19,7 @@ const Shipment = () => {
       {errors.name && <span className='error'>This field is required</span>}
       
       {/* Email */}
-      <input email {...register("email", { required: true } ,{ pattern: /\S+@\S+\.\S+/ })} placeholder='Enter Email' />
+      <input {...register("email", { required: true } ,{ pattern: /\S+@\S+\.\S+/ })}  placeholder='Enter Email' />
       {errors.email && <span className='error'>This field is required</span>}
 
       <input {...register("address", { required: true })} placeholder='Address'/>
