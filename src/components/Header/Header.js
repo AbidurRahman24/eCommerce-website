@@ -4,6 +4,7 @@ import logo from "../../images/Logo.png";
 import { Navbar, Nav, FormControl, Form, Button } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import { UserContext } from "../../App";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -17,9 +18,9 @@ const Header = () => {
   
     <Nav className="me-auto justify-content-end">
     
-    <Nav.Link to="/home">Home</Nav.Link>
-      <Nav.Link to="/review">Review</Nav.Link>
-      <Nav.Link to="/inventory">Inventory</Nav.Link>
+    <Nav.Link ><Link to="/home">Home</Link> </Nav.Link>
+      <Nav.Link > <Link to="/review">Review</Link></Nav.Link>
+      <Nav.Link > <Link to="/inventory">Inventory</Link> </Nav.Link>
       {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
