@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 
 const ReviewItem = (props) => {
+    console.log(props);
     const { name, quantity, price, key } = props.product;
     return (
         <div>

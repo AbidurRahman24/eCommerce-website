@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
-import fakeData from '../../fakeData';
 import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import Card from '../Card/Card';
 import ReviewItem from '../ReviewItem/ReviewItem';
@@ -16,27 +15,33 @@ const Review = () => {
     const handlePlaceOrder = () => {
         history.push('./shipment')
     }
-    let thankyou;
-    if (orderPlaced) {
-        thankyou = <img src={happyImage} alt="" />
-    }
-    useEffect(() => {
-        //cart
-        const saveCart = getDatabaseCart();
-        const productKeys = Object.keys(saveCart);
-
-        const cartProduct = productKeys.map(key => {
-            const product = fakeData.find(product => product.key === key)
-            product.quantity = saveCart[key];
-            return product
-        })
-        setCart(cartProduct)
-    }, []);
+    
     const removeProduct = (productKey) => {
         const newCart = cart.filter(product => product.key !== productKey)
         setCart(newCart)
         removeFromDatabaseCart(productKey)
     }
+    let thankyou;
+    if (orderPlaced) {
+        thankyou = <img src={happyImage} alt="" />
+    }
+    useEffect(()=>{
+        //cart
+        const savedCart = getDatabaseCart();
+        const productKeys = Object.keys(savedCart);
+
+        fetch('http://localhost:5000/productsByKeys', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(productKeys)
+        })
+        .then(res => res.json())
+        .then(data => {
+            setCart(data)
+            console.log(data)})
+    }, []);
     return (
         <div>
             <div className="container">

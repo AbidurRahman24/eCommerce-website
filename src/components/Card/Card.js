@@ -3,13 +3,13 @@ import React from 'react';
 
 const Card = (props) => {
    const card = props.card;
-    const total = card.reduce( (total, prd) => total + prd.price * prd.quantity , 0 )
-    // let total = 0;
-    // for(let i = 0; i< total.length; i++){
-    //     const product = total[i];
-    //    total = total + product.price * product.quantity;
-    //     console.log(product);
-    // }
+    // const total = card.reduce( (total, prd) => total + prd.price * prd.quantity || 1 , 0 )
+    let total = 0;
+    for(let i = 0; i< card.length; i++){
+        const product = card[i];
+        console.log(product.price, product.quantity)
+        total = total + product.price * product.quantity || 1;
+    }
 
     let shipping = 0;
     if(total > 35){
