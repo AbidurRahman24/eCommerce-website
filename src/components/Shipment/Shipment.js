@@ -6,14 +6,13 @@ import './Shipment.css'
 
 
 const Shipment = () => {
+  const { register, handleSubmit, watch, errors } = useForm();
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-
-  const { register, handleSubmit, watch, formState: { errors } } = useForm()
   const onSubmit = data => {
     const savedCart = getDatabaseCart();
-    const orderDetails = {...loggedInUser, products: savedCart, shipment: data, orderTime: new Date()}
-    console.log(orderDetails);
-    fetch('https://vast-brook-89040.herokuapp.com/addOrder', {
+      const orderDetails = {...loggedInUser, products: savedCart, shipment: data, orderTime: new Date()};
+
+      fetch('https://vast-brook-89040.herokuapp.com/addOrder/addOrder', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -22,28 +21,28 @@ const Shipment = () => {
       })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         if(data){
           processOrder();
           alert('your order placed successfully');
         }
       })
-  }
 
-  // console.log(watch("example")); // watch input value by passing the name of it
+    };
+
+  console.log(watch("example")); // watch input value by passing the name of it
 
   return (
     <form className="ship-form" onSubmit={handleSubmit(onSubmit)}>
-      <input name="name" defaultValue={loggedInUser.name} ref={register({ required: true })} placeholder="Your Name" />
+      <input name="name" defaultValue={loggedInUser.name} {...register('test',{ required: true })} placeholder="Your Name" />
       {errors.name && <span className="error">Name is required</span>}
      
-      <input name="email" defaultValue={loggedInUser.email} ref={register({ required: true })}  placeholder="Your Email"/>
+      <input name="email" defaultValue={loggedInUser.email} {...register('test',{ required: true })}  placeholder="Your Email"/>
       {errors.email && <span className="error">Email is required</span>}
      
-      <input name="address" ref={register({ required: true })}  placeholder="Your Address" />
+      <input name="address" {...register('test',{ required: true })}  placeholder="Your Address" />
       {errors.address && <span className="error">Address is required</span>}
      
-      <input name="phone" ref={register({ required: true })}  placeholder="Your Phone Number"/>
+      <input name="phone" {...register('test',{ required: true })}  placeholder="Your Phone Number"/>
       {errors.phone && <span className="error">Phone Number is required</span>}
       
       <input type="submit" />

@@ -19,6 +19,7 @@ import LogIn from './components/LogIn/LogIn';
 import Shipment from './components/Shipment/Shipment';
 import { createContext } from 'react';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Ship from './components/Shipment/Ship';
 
 export const UserContext = createContext();
 
@@ -44,7 +45,7 @@ function App(props) {
             <LogIn></LogIn>
           </Route>
           <PrivateRoute path="/shipment">
-            <Shipment></Shipment>
+            <Ship></Ship>
           </PrivateRoute>
           <Route exact path="/">
             <Shop />
