@@ -12,7 +12,7 @@ const Shop = () => {
   const [card, setCard] = useState([])
 
   useEffect(()=>{
-    fetch('http://localhost:5000/products')
+    fetch('https://vast-brook-89040.herokuapp.com/products')
     .then(res => res.json())
     .then(data => setProducts(data))
   },[])
@@ -21,7 +21,7 @@ const Shop = () => {
     const savedCart = getDatabaseCart();
     const productKeys = Object.keys(savedCart);
     // console.log(products, productKeys);
-    fetch('http://localhost:5000/productsByKeys', {
+    fetch('https://vast-brook-89040.herokuapp.com/productsByKeys', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
