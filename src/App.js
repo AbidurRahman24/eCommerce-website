@@ -16,7 +16,7 @@ import Inventory from './components/Inventory/Inventory';
 import NoMatch from './components/NoMatch/NoMatch';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import LogIn from './components/LogIn/LogIn';
-import Shipment from './components/Shipment/Shipment';
+//import Shipment from './components/Shipment/Shipment';
 import { createContext } from 'react';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Ship from './components/Shipment/Ship';
